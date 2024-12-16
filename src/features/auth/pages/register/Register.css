@@ -1,0 +1,11 @@
+.form__container {
+  display: flex;
+  padding: 32px;
+  border-radius: 8px;
+  align-items: center;
+  width: min(600px, 80%);
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--white-color);
+  box-shadow: var(--gray-ligth-color-secondary) 0px 4px 23px;
+}

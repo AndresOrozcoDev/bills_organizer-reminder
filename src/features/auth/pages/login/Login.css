@@ -1,0 +1,16 @@
+.form__container {
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    width: min(600px, 80%);
+    flex-direction: column;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    background-color: var(--white-color);
+    box-shadow: var(--gray-ligth-color-secondary) 0px 4px 23px;
+}
+
+.small--register {
+    font-weight: bold;
+    color: var(--blue-ligth-color-primary);
+}

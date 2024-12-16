@@ -1,0 +1,24 @@
+.container {
+  padding: var(--padding-container);
+}
+
+.container .options__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.container .options__container .dashboard__input {
+  width: 280px;
+  text-align: left;
+  padding: 0px 8px;
+  font-weight: 500;
+  height: 3.4375em;
+  border-radius: var(--border-radius);
+  border: 2px solid rgb(229, 234, 242);
+  color: var(--gray-dark-color-secondary);
+}
+
+.container .table__container {
+  margin-top: 1.5rem;
+}

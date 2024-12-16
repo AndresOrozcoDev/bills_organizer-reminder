@@ -1,0 +1,94 @@
+header {
+  top: 0px;
+  right: 0px;
+  left: auto;
+  width: 100%;
+  display: flex;
+  position: sticky;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--padding-container);
+  background-color: var(--bg-color);
+}
+
+header div {
+  align-items: center;
+  display: inline-flex;
+}
+
+header .header--left .icon__container img {
+  border-radius: 0;
+}
+
+header .header--right button {
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  margin-inline: 10px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.icon__container {
+  width: 32px;
+  height: 32px;
+  display: flex;
+}
+
+.icon__container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.dropdown {
+  background-color: var(--white-color);
+  position: absolute;
+  top: 70px;
+  right: 2%;
+  width: 250px;
+  border-radius: var(--border-radius);
+  border: 1px solid rgb(229, 234, 242);
+}
+
+hr {
+  margin: 0px;
+  border-width: 0px 0px thin;
+  border-style: solid;
+  border-color: rgb(229, 234, 242);
+}
+
+.dropdown .dropdowm__account,
+.dropdown .dropdowm__buttons {
+  padding: 1rem;
+}
+
+.dropdown .dropdowm__account button {
+  border: none;
+  width: 100%;
+  background-color: white;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.dropdown .dropdowm__account button p {
+  width: 100%;
+  text-align: start;
+  padding-inline: 10px;
+  font-weight: bold;
+}
+
+.dropdown .dropdowm__buttons button {
+  border: none;
+  width: 100%;
+  background-color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
