@@ -6,7 +6,7 @@ function Dashboard() {
     <div className="container">
       <div className="options__container">
         <input type="text" className="dashboard__input" placeholder="Buscar factura..."/>
-        <button className="btn btn--small">Agregar factura</button>
+        <a href="/create" className='btn'>Agregar factura</a>
       </div>
       <div className="table__container">
         <Table />

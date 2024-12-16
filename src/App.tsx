@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import { auth } from "./firebase-config.tsx";
 import { Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase-config.tsx";
+import "./App.css";
 
-import Login from "./features/auth/pages/login/Login.tsx";
-import Register from "./features/auth/pages/register/Register.tsx";
 import Home from "./features/bills/pages/home/Home.tsx";
+import Login from "./features/auth/pages/login/Login.tsx";
+import Create from "./features/bills/pages/create/Create.tsx";
+import Register from "./features/auth/pages/register/Register.tsx";
 import ProtectedRoute from "./features/bills/components/protectedRoute/ProtectedRoute.tsx";
+
 
 function App() {
   const [user, setUser] = useState<any>(null);
@@ -47,6 +49,14 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <Home user={user} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            <ProtectedRoute user={user}>
+              <Create user={user} />
             </ProtectedRoute>
           }
         />

@@ -52,7 +52,7 @@ function Form({ onSubmit, title }: FormProps) {
         />
       </div>
       <input
-        className="btn btn--primary"
+        className="btn"
         type="submit"
         value={title}
         title={title}

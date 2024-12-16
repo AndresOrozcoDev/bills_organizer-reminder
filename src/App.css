@@ -10,23 +10,19 @@
   .btn {
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.875rem;
     line-height: 1.75;
-    min-width: 64px;
-    background-color: var(--blue-ligth-color-primary);
-    width: 100%;
+    border-width: 0px;
+    text-align: center;
+    font-size: 0.875rem;
+    padding: 0.6rem 1.5rem;
+    width: min(200px, 100%);
     color: var(--white-color);
     border-radius: var(--border-radius);
-    padding: 0.6rem 1.5rem;
-    border-width: 0px;
+    background-color: var(--blue-ligth-color-primary);
   }
   
   .btn:hover {
     background-color: var(--blue-dark-color-primary);
-  }
-  
-  .btn--small {
-    width: 180px;
   }
   
   small {

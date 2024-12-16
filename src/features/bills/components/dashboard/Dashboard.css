@@ -4,16 +4,17 @@
 
 .container .options__container {
   display: flex;
-  flex-direction: row;
+  row-gap: 10px;
+  flex-direction: column;
   justify-content: space-between;
 }
 
 .container .options__container .dashboard__input {
-  width: 280px;
   text-align: left;
   padding: 0px 8px;
   font-weight: 500;
   height: 3.4375em;
+  width: min(280px, 100%);
   border-radius: var(--border-radius);
   border: 2px solid rgb(229, 234, 242);
   color: var(--gray-dark-color-secondary);
@@ -21,4 +22,11 @@
 
 .container .table__container {
   margin-top: 1.5rem;
+  overflow: auto;
+}
+
+@media(min-width: 600px) {
+  .container .options__container {
+    flex-direction: row;
+  }
 }

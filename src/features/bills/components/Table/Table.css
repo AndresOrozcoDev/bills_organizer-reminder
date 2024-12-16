@@ -1,0 +1,64 @@
+table {
+  display: table;
+  width: 100%;
+  border-spacing: 0px 1rem;
+  border-collapse: separate;
+}
+
+table thead {
+    display: table-header-group;
+}
+
+table thead tr {
+    color: inherit;
+    display: table-row;
+    vertical-align: middle;
+    outline: 0px;
+}
+
+table thead tr th {
+    line-height: 1.5rem;
+    text-align: left;
+    padding: 0px 16px;
+    color: rgb(148, 164, 196);
+    width: 150px;
+    min-width: 200px;
+}
+
+table tbody {
+    display: table-row-group;
+}
+
+table tbody tr {
+    background-color: var(--white-color);
+}
+
+table tbody tr td {
+    line-height: 1.43;
+    text-align: left;
+    padding: 16px;
+    color: rgb(148, 164, 196);
+}
+
+table tbody tr td:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+table tbody tr td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+table tbody tr td a img {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+table tbody tr td .status--column {
+    border-radius: 40px;
+    padding: 0.5rem 1.8rem;
+    color: var(--white-color);
+    background-color: rgb(167, 152, 255);
+}
