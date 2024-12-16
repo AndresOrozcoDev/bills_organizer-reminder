@@ -55,7 +55,7 @@ Basado en el template **UKO** donde tiene una vista previa [UKO template](https:
 
 1. Clonar este repositorio:
 ```bash
-    git clone https://github.com/usuario/organizador-de-facturas.git
+    git clone https://github.com/AndresOrozcoDev/bills_organizer-reminder.git
 ```
 
 2. Instalacion de dependencias:
@@ -65,13 +65,13 @@ Basado en el template **UKO** donde tiene una vista previa [UKO template](https:
 
 3. Ejecución del servidor:
 ```bash
-    npm start
+    npm run dev
 ```
 
 ## Ejecucion de pruebas
 
 ```bash
-   npm test
+   ...
 ```
 
 ## Despliegues
