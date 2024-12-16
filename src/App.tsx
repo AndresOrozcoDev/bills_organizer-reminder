@@ -6,7 +6,7 @@ import "./App.css";
 
 import Home from "./features/bills/pages/home/Home.tsx";
 import Login from "./features/auth/pages/login/Login.tsx";
-import Create from "./features/bills/pages/create/Create.tsx";
+import Bill from "./features/bills/pages/bill/Bill.tsx";
 import Register from "./features/auth/pages/register/Register.tsx";
 import ProtectedRoute from "./features/bills/components/protectedRoute/ProtectedRoute.tsx";
 
@@ -53,10 +53,10 @@ function App() {
           }
         />
         <Route
-          path="/create"
+          path="/bill/:id?"
           element={
             <ProtectedRoute user={user}>
-              <Create user={user} />
+              <Bill user={user} />
             </ProtectedRoute>
           }
         />

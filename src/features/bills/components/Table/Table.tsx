@@ -1,5 +1,8 @@
 import "./Table.css";
 import ViewIcon from "../../../../assets/icon/file-image-regular.svg";
+import EditIcon from "../../../../assets/icon/pen-to-square-regular.svg";
+import DeleteIcon from "../../../../assets/icon/xmark-solid.svg";
+
 
 function Table() {
   return (
@@ -11,6 +14,8 @@ function Table() {
           <th>Limite</th>
           <th>Estado</th>
           <th>Ver</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -22,21 +27,18 @@ function Table() {
             <small className="status--column">Pendiente</small>
           </td>
           <td>
-            <a href="" title="View bill">
+            <a href="">
               <img src={ViewIcon} alt="Ver" />
             </a>
           </td>
-        </tr>
-        <tr>
-          <td>Claro</td>
-          <td>43.000</td>
-          <td>Dia 6</td>
           <td>
-            <small className="status--column">Pendiente</small>
+            <a href="/bill/1">
+              <img src={EditIcon} alt="Editar" />
+            </a>
           </td>
           <td>
-            <a href="" title="View bill">
-              <img src={ViewIcon} alt="Ver" />
+            <a href="">
+              <img src={DeleteIcon} alt="Eliminar" />
             </a>
           </td>
         </tr>

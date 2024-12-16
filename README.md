@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Organizador de Facturas es una aplicación web diseñada para ayudar a los usuarios a gestionar sus facturas mensuales de manera eficiente. Los usuarios pueden registrar, ver, editar y eliminar facturas, así como recibir recordatorios para facturas próximas a vencer y almacenar comprobantes de pago.
+Aplicación web diseñada para ayudar a los usuarios a gestionar sus facturas y pagos mensuales de manera eficiente. Los usuarios pueden registrar, ver, editar y eliminar facturas y pagos realizados, así como recibir recordatorios para facturas próximas a vencer y almacenar comprobantes de pago.
 
 ## Características Principales
 
