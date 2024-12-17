@@ -1,13 +1,40 @@
+import { useState } from "react";
 import Camera from "../../../../assets/icon/camera-solid.svg";
+import { Bill } from "../../shared/models";
 import "./Form.css";
 
 interface FormProps {
-  id: any;
+  id: string | undefined;
+  onSubmit: (formData: Bill) => void;
 }
-function Form({ id }: FormProps) {
+function Form({ id, onSubmit }: FormProps) {
+  const [formData, setFormData] = useState<Bill>({
+    description: "",
+    amount: 0,
+    date: "",
+    status: "",
+    urlBill: "",
+  });
+
+  // TODO
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    onSubmit(formData);
+    setFormData({
+      description: "",
+      amount: 0,
+      date: "",
+      status: "",
+      urlBill: "",
+  });
   };
 
   return (
@@ -28,23 +55,27 @@ function Form({ id }: FormProps) {
       <div className="field__container">
         <form onSubmit={handleSubmit}>
           <div className="form__group">
-            <label htmlFor="descripcion">Descripcion *</label>
+            <label htmlFor="description">Descripcion *</label>
             <input
-              id="descripcion"
+              id="description"
               className="form__input"
               type="text"
               placeholder="Seguro auto"
               required
+              value={formData.description}
+              onChange={handleChange}
             />
           </div>
           <div className="form__group">
-            <label htmlFor="monto">Monto *</label>
+            <label htmlFor="amount">Monto *</label>
             <input
-              id="monto"
+              id="amount"
               className="form__input"
               type="number"
               placeholder="$12.00"
               required
+              value={formData.amount}
+              onChange={handleChange}
             />
           </div>
           <div className="form__group">
@@ -55,12 +86,19 @@ function Form({ id }: FormProps) {
               type="date"
               placeholder="12/22/2024"
               required
+              value={formData.date}
+              onChange={handleChange}
             />
           </div>
           <div className="form__group">
             <label htmlFor="status">Estado *</label>
-            <select id="status" className="form__input">
-              <option value="" disabled selected>Selecciona un estado</option>
+            <select
+              id="status"
+              className="form__input"
+              value={formData.status}
+              onChange={handleChange}
+            >
+              <option value="" disabled>Selecciona un estado</option>
               <option value="pendent">Pendiente</option>
               <option value="pay">Pagado</option>
             </select>
@@ -72,9 +110,15 @@ function Form({ id }: FormProps) {
               className="form__input"
               type="text"
               placeholder="Comprobante url"
+              value={formData.urlBill}
+              onChange={handleChange}
             />
           </div>
-          <input className="btn" type="submit" value={id ? 'Ediatr' : 'Agregar'} />
+          <input
+            className="btn"
+            type="submit"
+            value={id ? "Ediatr" : "Agregar"}
+          />
         </form>
       </div>
     </div>
