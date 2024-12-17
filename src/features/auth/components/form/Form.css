@@ -10,27 +10,3 @@
   width: 38px;
   margin-bottom: 8px;
 }
-
-.form__group {
-    display: flex;
-    margin-bottom: 16px;
-    flex-direction: column;
-}
-
-label {
-  margin-top: 0px;
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.form__input {
-  width: 100%;
-  text-align: left;
-  padding: 0px 8px;
-  font-weight: 500;
-  height: 3.4375em;
-  border-radius: var(--border-radius);
-  border: 2px solid rgb(229, 234, 242);
-  color: var(--gray-dark-color-secondary);
-}

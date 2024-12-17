@@ -1,0 +1,92 @@
+.bg--while {
+  background-color: var(--white-color);
+  border: 1px solid rgb(229, 234, 242);
+  border-radius: var(--border-radius);
+  padding: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% - 10%);
+  gap: 10px;
+}
+
+.bg--while .file__container,
+.bg--while .field__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100%;
+  max-width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 0px 21px 1px;
+  overflow: hidden;
+  border: 1px solid rgb(229, 234, 242);
+  padding: 24px;
+  border-radius: var(--border-radius);
+}
+
+.bg--while .file__container div {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(236, 239, 245);
+}
+
+.bg--while .file__container div div {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--white-color);
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(148, 164, 196);
+}
+
+.bg--while .file__container div div label {
+  margin-bottom: 0;
+}
+
+.bg--while .file__container div div label input {
+  display: none;
+}
+
+.bg--while .file__container div div label span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.54);
+  outline: 0px;
+  flex: 0 0 auto;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.bg--while .file__container div div label span img {
+  width: 32px;
+  height: 32px;
+}
+
+.bg--while .file__container small {
+  line-height: 1.9;
+}
+
+@media (min-width: 600px) {
+  .bg--while {
+    column-gap: 10px;
+    flex-wrap: nowrap;
+  }
+  .bg--while .file__container,
+  .bg--while .field__container {
+    display: flex;
+    flex-direction: rowm;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+}

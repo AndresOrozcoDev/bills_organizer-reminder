@@ -14,7 +14,7 @@
   padding: 0px 8px;
   font-weight: 500;
   height: 3.4375em;
-  width: min(280px, 100%);
+  width: 100%;
   border-radius: var(--border-radius);
   border: 2px solid rgb(229, 234, 242);
   color: var(--gray-dark-color-secondary);
@@ -25,8 +25,13 @@
   overflow: auto;
 }
 
-@media(min-width: 600px) {
+@media (min-width: 600px) {
   .container .options__container {
     flex-direction: row;
+  }
+
+  .container .options__container .btn,
+  .container .options__container .dashboard__input {
+    width: 280px;
   }
 }

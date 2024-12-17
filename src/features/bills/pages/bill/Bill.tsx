@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Form from '../../components/Form/Form.tsx';
 import "./Bill.css";
 
 interface BillProps {
@@ -18,14 +19,7 @@ function Bill({ user }: BillProps) {
   }, [id]);
 
   return (
-    <div>
-      <h1>{id ? 'Editar Factura' : 'Crear Factura'}</h1>
-      {id ? (
-        <p>Editando la factura con ID: {id}</p>
-      ) : (
-        <p>Creando una nueva factura</p>
-      )}
-    </div>
+    <Form id={id} />
   )
 }
 

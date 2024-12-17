@@ -1,7 +1,6 @@
 import { useState } from "react";
-import Logo from '../../../../assets/logo/favicon.png';
+import Logo from "../../../../assets/logo/favicon.png";
 import "./Form.css";
-
 
 interface FormProps {
   onSubmit: (credentials: { email: string; password: string }) => void;
@@ -20,11 +19,7 @@ function Form({ onSubmit, title }: FormProps) {
   return (
     <form onSubmit={handleSubmit}>
       <div className="form__header">
-        <img
-          src={Logo}
-          className="form__logo"
-          alt="Uko Logo"
-        />
+        <img src={Logo} className="form__logo" alt="Uko Logo" />
         <h2>{title}</h2>
       </div>
       <div className="form__group">
@@ -51,12 +46,7 @@ function Form({ onSubmit, title }: FormProps) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <input
-        className="btn"
-        type="submit"
-        value={title}
-        title={title}
-      />
+      <input className="btn" type="submit" value={title} title={title} />
     </form>
   );
 }
