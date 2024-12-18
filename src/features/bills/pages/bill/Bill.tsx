@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { addBill, getBillById, updateBill } from "../../services/bill.ts";
 import Form from "../../components/Form/Form.tsx";
 import { Bill as BillInterface } from "../../shared/models.ts";
+import { useNavigate } from "react-router-dom";
 import "./Bill.css";
 
 interface BillProps {
@@ -12,6 +13,7 @@ interface BillProps {
 function Bill({ user }: BillProps) {
   const [BillEdit, setBillEdit] = useState<BillInterface | null>(null);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBill = async () => {
@@ -51,6 +53,7 @@ function Bill({ user }: BillProps) {
         const result = await addBill(billWithUserId);
         console.log("Factura añadida exitosamente con ID: ", result);
       }
+      navigate("/home");
       setBillEdit(null);
     } catch (e) {
       console.error("Error al agregar/editar factura: ", e);

@@ -90,7 +90,9 @@ input[type="email"],
 input[type="number"],
 input[type="date"],
 input[type="password"]:focus {
+  width: 100%;
   outline: 0px;
   font-weight: 500;
+  background-color: var(--white-color);
   color: var(--gray-dark-color-secondary);
 }
