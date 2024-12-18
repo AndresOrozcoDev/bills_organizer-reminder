@@ -2,9 +2,19 @@ import "./Table.css";
 import ViewIcon from "../../../../assets/icon/file-image-regular.svg";
 import EditIcon from "../../../../assets/icon/pen-to-square-regular.svg";
 import DeleteIcon from "../../../../assets/icon/xmark-solid.svg";
+import { BillsByID } from "../../shared/models";
 
+interface TableProps {
+  bills: BillsByID[];
+  onDelete: (id: string) => void;
+}
 
-function Table() {
+function Table({ bills, onDelete }: TableProps) {
+  
+  const handleDelete = (id: string) => {
+    onDelete(id);
+  };
+
   return (
     <table>
       <thead>
@@ -19,29 +29,31 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Claro</td>
-          <td>43.000</td>
-          <td>Dia 6</td>
-          <td>
-            <small className="status--column">Pendiente</small>
-          </td>
-          <td>
-            <a href="">
+        {bills.map((bill) => (
+          <tr key={bill.id}>
+            <td>{bill.data.description}</td>
+            <td>{bill.data.amount}</td>
+            <td>{bill.data.date}</td>
+            <td>
+              <small className={`status--column ${bill.data.status === "pendiente" ? "status--pending" : "status--paid"}`}>{bill.data.status}</small>
+            </td>
+            <td>
+            <a href={bill.data.urlBill}>
               <img src={ViewIcon} alt="Ver" />
             </a>
           </td>
           <td>
-            <a href="/bill/1">
+            <a href={`/bill/${bill.id}`}>
               <img src={EditIcon} alt="Editar" />
             </a>
           </td>
           <td>
-            <a href="">
+            <a onClick={() => handleDelete(bill.id)}>
               <img src={DeleteIcon} alt="Eliminar" />
             </a>
           </td>
-        </tr>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

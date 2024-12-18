@@ -1,7 +1,19 @@
+import { BillsByID } from '../../shared/models.ts';
 import Table from '../Table/Table.tsx'
 import "./Dashboard.css";
 
-function Dashboard() {
+interface DashboardProps {
+  bills: BillsByID[];
+  onDeleteBill: (id: string) => void;
+}
+
+
+function Dashboard({ bills, onDeleteBill }: DashboardProps) {
+
+  const handleDeleteBill = (id: string) => {
+    onDeleteBill(id);
+  };
+  
   return (
     <div className="container">
       <div className="options__container">
@@ -9,7 +21,7 @@ function Dashboard() {
         <a href="/bill" className='btn'>Agregar factura</a>
       </div>
       <div className="table__container">
-        <Table />
+        <Table bills={bills} onDelete={handleDeleteBill} />
       </div>
     </div>
   );

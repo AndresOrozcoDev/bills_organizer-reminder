@@ -5,10 +5,6 @@ table {
   border-collapse: separate;
 }
 
-table thead {
-    display: table-header-group;
-}
-
 table thead tr {
     color: inherit;
     display: table-row;
@@ -20,13 +16,9 @@ table thead tr th {
     line-height: 1.5rem;
     text-align: left;
     padding: 0px 16px;
-    color: rgb(148, 164, 196);
+    color: var(--gray-dark-color-secondary);
     width: 150px;
     min-width: 200px;
-}
-
-table tbody {
-    display: table-row-group;
 }
 
 table tbody tr {
@@ -37,17 +29,17 @@ table tbody tr td {
     line-height: 1.43;
     text-align: left;
     padding: 16px;
-    color: rgb(148, 164, 196);
+    color: var(--gray-ligth-color-secondary);
 }
 
 table tbody tr td:first-child {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
 }
 
 table tbody tr td:last-child {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
 }
 
 table tbody tr td a img {
@@ -59,6 +51,14 @@ table tbody tr td a img {
 table tbody tr td .status--column {
     border-radius: 40px;
     padding: 0.5rem 1.8rem;
-    color: var(--white-color);
-    background-color: rgb(167, 152, 255);
 }
+
+table tbody tr td .status--pending {
+    background-color: #f39c12;
+    color: white;
+  }
+  
+table tbody tr td .status--paid {
+    background-color: #27ae60;
+    color: white;
+  }
