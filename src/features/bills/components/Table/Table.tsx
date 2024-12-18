@@ -35,7 +35,7 @@ function Table({ bills, onDelete }: TableProps) {
             <td>{bill.data.amount}</td>
             <td>{bill.data.date}</td>
             <td>
-              <small className={`status--column ${bill.data.status === "pendiente" ? "status--pending" : "status--paid"}`}>{bill.data.status}</small>
+              <small className={`status--column ${bill.data.status.trim().toLowerCase() === "pendiente" ? "status--pending" : "status--paid"}`}>{bill.data.status}</small>
             </td>
             <td>
             <a href={bill.data.urlBill}>
