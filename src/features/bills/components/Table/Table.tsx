@@ -1,8 +1,6 @@
-import "./Table.css";
-import ViewIcon from "../../../../assets/icon/file-image-regular.svg";
-import EditIcon from "../../../../assets/icon/pen-to-square-regular.svg";
-import DeleteIcon from "../../../../assets/icon/xmark-solid.svg";
 import { BillsByID } from "../../shared/models";
+import { FileImage, X, Pencil } from "lucide-react";
+import "./Table.css";
 
 interface TableProps {
   bills: BillsByID[];
@@ -10,7 +8,6 @@ interface TableProps {
 }
 
 function Table({ bills, onDelete }: TableProps) {
-  
   const handleDelete = (id: string) => {
     onDelete(id);
   };
@@ -35,23 +32,31 @@ function Table({ bills, onDelete }: TableProps) {
             <td>{bill.data.amount}</td>
             <td>{bill.data.date}</td>
             <td>
-              <small className={`status--column ${bill.data.status.trim().toLowerCase() === "pendiente" ? "status--pending" : "status--paid"}`}>{bill.data.status}</small>
+              <small
+                className={`status--column ${
+                  bill.data.status.trim().toLowerCase() === "pendiente"
+                    ? "status--pending"
+                    : "status--paid"
+                }`}
+              >
+                {bill.data.status}
+              </small>
             </td>
             <td>
-            <a href={bill.data.urlBill}>
-              <img src={ViewIcon} alt="Ver" />
-            </a>
-          </td>
-          <td>
-            <a href={`/bill/${bill.id}`}>
-              <img src={EditIcon} alt="Editar" />
-            </a>
-          </td>
-          <td>
-            <a onClick={() => handleDelete(bill.id)}>
-              <img src={DeleteIcon} alt="Eliminar" />
-            </a>
-          </td>
+              <a href={bill.data.urlBill}>
+                <FileImage color="rgb(148, 164, 196)" size={28} />
+              </a>
+            </td>
+            <td>
+              <a href={`/bill/${bill.id}`}>
+                <Pencil color="rgb(148, 164, 196)" size={28} />
+              </a>
+            </td>
+            <td>
+              <a onClick={() => handleDelete(bill.id)}>
+              <X color="rgb(148, 164, 196)" size={28} />
+              </a>
+            </td>
           </tr>
         ))}
       </tbody>
