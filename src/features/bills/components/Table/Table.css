@@ -6,19 +6,19 @@ table {
 }
 
 table thead tr {
+    outline: 0px;
     color: inherit;
     display: table-row;
     vertical-align: middle;
-    outline: 0px;
 }
 
 table thead tr th {
-    line-height: 1.5rem;
-    text-align: left;
-    padding: 0px 16px;
-    color: var(--gray-dark-color-secondary);
     width: 150px;
-    min-width: 200px;
+    text-align: left;
+    min-width: 100px;
+    padding: 0px 16px;
+    line-height: 1.5rem;
+    color: var(--gray-dark-color-secondary);
 }
 
 table tbody tr {
@@ -26,9 +26,9 @@ table tbody tr {
 }
 
 table tbody tr td {
-    line-height: 1.43;
-    text-align: left;
     padding: 16px;
+    text-align: left;
+    line-height: 1.43;
     color: var(--gray-ligth-color-secondary);
 }
 
@@ -40,12 +40,6 @@ table tbody tr td:first-child {
 table tbody tr td:last-child {
     border-top-right-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
-}
-
-table tbody tr td a img {
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
 }
 
 table tbody tr td .status--column {
