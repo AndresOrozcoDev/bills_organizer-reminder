@@ -11,7 +11,6 @@ interface BillProps {
 
 function Bill({ user }: BillProps) {
   const [BillEdit, setBillEdit] = useState<BillInterface | null>(null);
-  const [formValues, setFormValues] = useState<BillInterface | null>(null);
   const { id } = useParams();
 
   useEffect(() => {
