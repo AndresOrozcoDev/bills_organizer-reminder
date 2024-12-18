@@ -9,6 +9,7 @@ import Login from "./features/auth/pages/login/Login.tsx";
 import Bill from "./features/bills/pages/bill/Bill.tsx";
 import Register from "./features/auth/pages/register/Register.tsx";
 import ProtectedRoute from "./features/bills/components/protectedRoute/ProtectedRoute.tsx";
+import NotFound from "./shared/pages/404/404.tsx";
 
 
 function App() {
@@ -32,9 +33,8 @@ function App() {
 
   if (loading) {
     return (
-      <div className="spinner-container">
+      <div className="bg--fullPageCenter">
         <div className="spinner"></div>
-        <p>Verificando sesión...</p>
       </div>
     );
   }
@@ -60,6 +60,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
