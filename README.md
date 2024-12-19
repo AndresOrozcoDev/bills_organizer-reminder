@@ -12,9 +12,9 @@ Aplicación web diseñada para ayudar a los usuarios a gestionar sus facturas y 
 
 2. **Gestión de Facturas (CRUD)**
 
-   - **Crear**: Registrar nuevas facturas con nombre del servicio, monto, fecha límite y estado (pendiente o pagada).
+   - **Crear**: Registrar nuevas facturas con nombre del servicio, monto, fecha límite, url del comprobante y estado (pendiente o pagada).
    - **Leer**: Ver un listado de facturas organizadas.
-   - **Actualizar**: Marcar facturas como pagadas o editar sus detalles.
+   - **Actualizar**: Marcar facturas como pagadas y/o agregar la url del comprobante en sus detalles.
    - **Eliminar**: Eliminar facturas antiguas o incorrectas.
 
 3. **Almacenamiento de Comprobantes**
@@ -27,11 +27,9 @@ Aplicación web diseñada para ayudar a los usuarios a gestionar sus facturas y 
 ### Frontend (React)
 
 - **React**: Framework utilizado para construir una interfaz intuitiva y responsiva.
-- **Componentes sugeridos**:
-  - `Login / Register`: Para la autenticación.
-  - `Dashboard`: Muestra un resumen de facturas (pendientes, pagadas, próximas a vencer).
-  - `FacturaForm`: Formulario para agregar o editar facturas.
-  - `FacturaList`: Lista de facturas con opciones para gestionar cada una.
+- **Modulos**: Por medio de la arquitectura modular se divide en dos grandes modulos:
+  - `Auth`: Para la autenticación.
+  - `Bills`: Para la gestion de facturas.
 
 ### Backend (Firebase)
 
@@ -50,6 +48,9 @@ Basado en el template **UKO** donde tiene una vista previa [UKO template](https:
 
 - **Node.js** y **npm** para ejecutar el proyecto localmente.
 - Cuenta de Firebase para usar Firebase Authentication, Firestore y Firebase Storage.
+
+## Demo
+Desplegado de forma gratuita en **Netlify**, para abrir el [Demo Bills](https://aesthetic-kleicha-9bf9d8.netlify.app/)
 
 ## Instalación
 
@@ -79,9 +80,6 @@ Basado en el template **UKO** donde tiene una vista previa [UKO template](https:
 ```bash
    npm run build
 ```
-
-## Prototipo de diseño
-Basado en gran parte de [UKO Template](https://uko-react-free.netlify.app/dashboard).
 
 ## Libreria de iconos
 Se usa `lucid-react` por su ligero peso y compatibilidad con React JS, para la [docuemntación](https://lucide.dev/guide/packages/lucide-react) y visualizar los [Iconos](https://lucide.dev/icons/)
