@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { auth } from "./firebase-config.tsx";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import "./App.css";
 
+import NotFound from "./shared/pages/404/404.tsx";
 import Home from "./features/bills/pages/home/Home.tsx";
 import Login from "./features/auth/pages/login/Login.tsx";
 import Bill from "./features/bills/pages/bill/Bill.tsx";
 import Register from "./features/auth/pages/register/Register.tsx";
-import ProtectedRoute from "./features/bills/components/protectedRoute/ProtectedRoute.tsx";
-import NotFound from "./shared/pages/404/404.tsx";
+import ProtectedRoute from "./features/auth/components/protectedRoute/ProtectedRoute.tsx";
 
 
 function App() {
@@ -18,16 +18,10 @@ function App() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        console.log("onAuthStateChanged activado:", currentUser);
-        setUser(currentUser);
-      } else {
-        setUser(null);
-      }
+      setUser(currentUser || null);
       setLoading(false);
     });
 
-    // Limpieza del listener cuando el componente se desmonte
     return () => unsubscribe();
   }, []);
 
@@ -42,7 +36,10 @@ function App() {
   return (
     <div className="bg">
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route
+          path="/"
+          element={user ? <Navigate to="/home" /> : <Login />}
+        />
         <Route path="/register" element={<Register />} />
         <Route
           path="/home"

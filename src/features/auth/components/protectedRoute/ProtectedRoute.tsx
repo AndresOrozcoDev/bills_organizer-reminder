@@ -5,11 +5,11 @@ interface ProtectedRouteProps {
   children: JSX.Element;
 }
 
-function ProtectedRoute({ user, children }: ProtectedRouteProps) {
+const ProtectedRoute = ({ user, children }: ProtectedRouteProps) => {
   if (!user) {
     return <Navigate to="/" />;
   }
   return children;
-}
+};
 
 export default ProtectedRoute;
