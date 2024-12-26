@@ -1,7 +1,6 @@
 import "./Form.css";
 import { Bill } from "../../shared/models";
 import { useEffect, useState } from "react";
-import Camera from "../../../../assets/icon/camera-solid.svg";
 
 interface FormProps {
   billEdit: Bill | null;
@@ -30,13 +29,13 @@ function Form({ billEdit, onSubmit }: FormProps) {
       console.log(billEdit);
       setFormData(billEdit);
       if (billEdit.file) {
-         // Si el archivo es una URL (string)
-      if (typeof billEdit.file === "string") {
-        setFileUrl(billEdit.file); // Si es una URL de archivo, lo usamos directamente
-      } else if (billEdit.file instanceof File) {
-        // Si es un objeto de tipo File, creamos una URL para previsualizarlo
-        setFileUrl(URL.createObjectURL(billEdit.file));
-      }
+        // Si el archivo es una URL (string)
+        if (typeof billEdit.file === "string") {
+          setFileUrl(billEdit.file); // Si es una URL de archivo, lo usamos directamente
+        } else if (billEdit.file instanceof File) {
+          // Si es un objeto de tipo File, creamos una URL para previsualizarlo
+          setFileUrl(URL.createObjectURL(billEdit.file));
+        }
       }
     } else {
       setFormData(defaultFormData);
@@ -80,20 +79,18 @@ function Form({ billEdit, onSubmit }: FormProps) {
     <div className="bg--while">
       <div className="file__container">
         <div>
-          <div>
-            <label htmlFor="upload" className="file__label">
+          <label htmlFor="upload" className="file__label">
             <input
-                accept="image/*"
-                id="upload"
-                type="file"
-                aria-label="Subir archivo"
-                onChange={handleChange}
-              />
-              <span>
-                <img src={fileUrl || Camera} alt="Icono de cámara" />
-              </span>
-            </label>
-          </div>
+              accept="image/*"
+              id="upload"
+              type="file"
+              aria-label="Subir archivo"
+              onChange={handleChange}
+            />
+            <div>
+              <img src={fileUrl || ""} alt="Archivo" />
+            </div>
+          </label>
         </div>
         {file && <small>{file.name}</small>}
         <small>Allowed *.jpeg, *.jpg, *.png, *.gif max size of 3.1 MB</small>

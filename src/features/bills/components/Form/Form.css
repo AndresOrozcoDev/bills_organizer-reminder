@@ -24,55 +24,16 @@
   border-radius: var(--border-radius);
 }
 
-.bg--while .file__container div {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  border-radius: 50%;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(236, 239, 245);
+.bg--while .file__container label div {
+  width: 100%;
+  height: 400px;
+  position: relative;
 }
 
-.bg--while .file__container div div {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 2px solid var(--white-color);
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(148, 164, 196);
-}
-
-.bg--while .file__container div div label {
-  margin-bottom: 0;
-}
-
-.bg--while .file__container div div label input {
-  display: none;
-}
-
-.bg--while .file__container div div label span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  text-align: center;
-  font-size: 1.5rem;
-  color: rgba(0, 0, 0, 0.54);
-  outline: 0px;
-  flex: 0 0 auto;
-  padding: 8px;
-  border-radius: 50%;
-}
-
-.bg--while .file__container div div label span img {
-  width: 32px;
-  height: 32px;
-}
-
-.bg--while .file__container small {
-  line-height: 1.9;
+.bg--while .file__container label div img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 @media (min-width: 600px) {
@@ -83,7 +44,6 @@
   .bg--while .file__container,
   .bg--while .field__container {
     display: flex;
-    flex-direction: rowm;
     justify-content: center;
     align-items: center;
     flex-basis: 50%;
