@@ -4,8 +4,8 @@ export interface Bill {
   date: string;
   description: string;
   status: string;
-  urlBill?: string;
-  userId: string
+  file?: string | File | null;
+  userId: string;
 }
 
 export interface BillsByID {

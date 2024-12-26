@@ -15,19 +15,32 @@ const defaultFormData: Bill = {
   amount: 0,
   date: "",
   status: "",
-  urlBill: "",
+  file: "",
   userId: "",
 };
 
 function Form({ billEdit, onSubmit }: FormProps) {
   const [formData, setFormData] = useState<Bill>(defaultFormData);
+  const [file, setFile] = useState<File | null>(null);
+  const [fileUrl, setFileUrl] = useState<string | null>("");
 
   // Actualiza formData cuando billEdit cambia
   useEffect(() => {
     if (billEdit) {
+      console.log(billEdit);
       setFormData(billEdit);
+      if (billEdit.file) {
+         // Si el archivo es una URL (string)
+      if (typeof billEdit.file === "string") {
+        setFileUrl(billEdit.file); // Si es una URL de archivo, lo usamos directamente
+      } else if (billEdit.file instanceof File) {
+        // Si es un objeto de tipo File, creamos una URL para previsualizarlo
+        setFileUrl(URL.createObjectURL(billEdit.file));
+      }
+      }
     } else {
       setFormData(defaultFormData);
+      setFileUrl(null);
     }
   }, [billEdit]);
 
@@ -35,18 +48,32 @@ function Form({ billEdit, onSubmit }: FormProps) {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    const { name, value, type } = e.target;
+    if (type === "file" && e.target instanceof HTMLInputElement) {
+      const uploadedFile = e.target.files ? e.target.files[0] : null;
+      setFile(uploadedFile); // Guarda el archivo en el estado
+      // Si es una imagen, generamos una URL para previsualizarla
+      if (uploadedFile && uploadedFile.type.startsWith("image/")) {
+        setFileUrl(URL.createObjectURL(uploadedFile));
+      } else {
+        setFileUrl(null); // Si no es una imagen, no mostramos previsualización
+      }
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   // Maneja el envío del formulario
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSubmit(formData);
+    const finalData = { ...formData, file }; // Agrega el archivo al formulario
+    onSubmit(finalData);
     setFormData(defaultFormData); // Resetea el formulario tras el envío
+    setFile(null);
+    setFileUrl(null);
   };
 
   return (
@@ -55,18 +82,20 @@ function Form({ billEdit, onSubmit }: FormProps) {
         <div>
           <div>
             <label htmlFor="upload" className="file__label">
-              <input
+            <input
                 accept="image/*"
                 id="upload"
                 type="file"
                 aria-label="Subir archivo"
+                onChange={handleChange}
               />
               <span>
-                <img src={Camera} alt="Icono de cámara" />
+                <img src={fileUrl || Camera} alt="Icono de cámara" />
               </span>
             </label>
           </div>
         </div>
+        {file && <small>{file.name}</small>}
         <small>Allowed *.jpeg, *.jpg, *.png, *.gif max size of 3.1 MB</small>
       </div>
 
@@ -125,18 +154,6 @@ function Form({ billEdit, onSubmit }: FormProps) {
               <option value="Pendiente">Pendiente</option>
               <option value="Pagado">Pagado</option>
             </select>
-          </div>
-
-          <div className="form__group">
-            <label htmlFor="urlBill">Comprobante</label>
-            <input
-              name="urlBill"
-              className="form__input"
-              type="text"
-              placeholder="Comprobante url"
-              value={formData.urlBill}
-              onChange={handleChange}
-            />
           </div>
 
           <input

@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { addBill, getBillById, updateBill } from "../../services/bill.ts";
+import {
+  addBill,
+  getBillById,
+  updateBill,
+  uploadFile,
+} from "../../services/bill.ts";
 import Form from "../../components/Form/Form.tsx";
 import { Bill as BillInterface } from "../../shared/models.ts";
 import { useNavigate } from "react-router-dom";
@@ -40,19 +45,30 @@ function Bill({ user }: BillProps) {
       console.error("Usuario no autenticado");
       return;
     }
-    console.log(formData);
-    
+
     try {
+      let fileURL: string | null = null;
+
+      // Subir archivo si es de tipo File
+      if (formData.file && formData.file instanceof File) {
+        fileURL = await uploadFile(formData.file);
+      }
+
+      // Crear el objeto bill con la URL del archivo (si existe)
+      const billData: BillInterface = {
+        ...formData,
+        file: fileURL,
+        userId: user.uid,
+      };
+
       if (BillEdit && id) {
-        // Modo edición
-        await updateBill(id, formData);
+        await updateBill(id, billData);
         console.log(`Factura con ID ${BillEdit.id} editada exitosamente.`);
       } else {
-        // Modo agregar
-        const billWithUserId = { ...formData, userId: user.uid };
-        const result = await addBill(billWithUserId);
+        const result = await addBill(billData);
         console.log("Factura añadida exitosamente con ID: ", result);
       }
+
       navigate("/home");
       setBillEdit(null);
     } catch (e) {

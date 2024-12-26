@@ -10,6 +10,12 @@ import {
   getDoc,
   updateDoc,
 } from "firebase/firestore";
+import { 
+  getStorage, 
+  ref, 
+  uploadBytes, 
+  getDownloadURL 
+} from "firebase/storage";
 import { Bill, BillsByID } from "../shared/models";
 
 // Servicio para obtener las facturas de un usuario en Firestore.
@@ -30,7 +36,9 @@ export const getBillsByUser = async (userId: string): Promise<BillsByID[]> => {
 };
 
 // Servicio para obtener la factura por ID de la factura.
-export const getBillById = async ( billId: string ): Promise<BillsByID | null> => {
+export const getBillById = async (
+  billId: string
+): Promise<BillsByID | null> => {
   try {
     const billDocRef = doc(db, "bills", billId);
     const billDoc = await getDoc(billDocRef);
@@ -60,14 +68,18 @@ export const addBill = async (bill: Bill) => {
   }
 };
 
-
 // Servicio para editar una factura en Firestore.
-export const updateBill = async (billId: string, updatedBill: Partial<Bill>) => {
+export const updateBill = async (
+  billId: string,
+  updatedBill: Partial<Bill>
+) => {
   try {
     const billDocRef = doc(db, "bills", billId);
     const billDoc = await getDoc(billDocRef);
     if (!billDoc.exists()) {
-      console.warn(`No se encontró la factura con ID ${billId} para actualizar.`);
+      console.warn(
+        `No se encontró la factura con ID ${billId} para actualizar.`
+      );
       return;
     }
     await updateDoc(billDocRef, updatedBill);
@@ -84,13 +96,35 @@ export const deleteBill = async (billId: string) => {
     const billDocRef = doc(db, "bills", billId);
     const billDoc = await getDoc(billDocRef);
     if (!billDoc.exists()) {
-      console.warn(`No se encontró la factura con ID: ${billId} para eliminar.`);
+      console.warn(
+        `No se encontró la factura con ID: ${billId} para eliminar.`
+      );
       return;
     }
     await deleteDoc(billDocRef);
     console.log(`Factura con ID ${billId} eliminada correctamente.`);
   } catch (e) {
     console.error("Error al eliminar la factura: ", e);
+    throw e;
+  }
+};
+
+// Servicio para subir un archivo a Firebase Storage
+export const uploadFile = async (file: File): Promise<string> => {
+  try {
+    const storage = getStorage();
+    const fileRef = ref(storage, `bills/${file.name}`);
+
+    // Subir archivo a Firebase Storage
+    const snapshot = await uploadBytes(fileRef, file);
+
+    // Obtener la URL de descarga del archivo subido
+    const downloadURL = await getDownloadURL(snapshot.ref);
+
+    console.log(`Archivo subido correctamente: ${downloadURL}`);
+    return downloadURL;
+  } catch (e) {
+    console.error("Error al subir el archivo: ", e);
     throw e;
   }
 };

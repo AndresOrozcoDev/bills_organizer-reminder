@@ -43,7 +43,7 @@ function Table({ bills, onDelete }: TableProps) {
               </small>
             </td>
             <td>
-              <a href={bill.data.urlBill}>
+              <a href={bill.data.file ? (typeof bill.data.file === 'string' ? bill.data.file : '') : undefined}>
                 <FileImage color="rgb(148, 164, 196)" size={28} />
               </a>
             </td>
