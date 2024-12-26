@@ -50,12 +50,12 @@ function Form({ billEdit, onSubmit }: FormProps) {
     const { name, value, type } = e.target;
     if (type === "file" && e.target instanceof HTMLInputElement) {
       const uploadedFile = e.target.files ? e.target.files[0] : null;
-      setFile(uploadedFile); // Guarda el archivo en el estado
+      setFile(uploadedFile);
       // Si es una imagen, generamos una URL para previsualizarla
       if (uploadedFile && uploadedFile.type.startsWith("image/")) {
         setFileUrl(URL.createObjectURL(uploadedFile));
       } else {
-        setFileUrl(null); // Si no es una imagen, no mostramos previsualización
+        setFileUrl(null);
       }
     } else {
       setFormData((prevData) => ({
@@ -68,9 +68,9 @@ function Form({ billEdit, onSubmit }: FormProps) {
   // Maneja el envío del formulario
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const finalData = { ...formData, file }; // Agrega el archivo al formulario
+    const finalData = { ...formData, file };
     onSubmit(finalData);
-    setFormData(defaultFormData); // Resetea el formulario tras el envío
+    setFormData(defaultFormData);
     setFile(null);
     setFileUrl(null);
   };
@@ -81,7 +81,7 @@ function Form({ billEdit, onSubmit }: FormProps) {
         <div>
           <label htmlFor="upload" className="file__label">
             <input
-              accept="image/*"
+              accept="image/*, .pdf"
               id="upload"
               type="file"
               aria-label="Subir archivo"
@@ -93,9 +93,11 @@ function Form({ billEdit, onSubmit }: FormProps) {
           </label>
         </div>
         {file && <small>{file.name}</small>}
-        <small>Allowed *.jpeg, *.jpg, *.png, *.gif max size of 3.1 MB</small>
+        <small>Allowed *.jpeg, *.jpg, *.pdf, *.png, *.gif max size of 3.1 MB</small>
       </div>
 
+      <hr />
+      
       <div className="field__container">
         <form onSubmit={handleSubmit}>
           <div className="form__group">
