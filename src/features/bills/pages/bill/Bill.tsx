@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
   addBill,
+  deleteFile,
   getBillById,
   updateBill,
   uploadFile,
@@ -49,10 +50,21 @@ function Bill({ user }: BillProps) {
     try {
       let fileURL: string | null = null;
 
-      // Subir archivo si es de tipo File
-      if (formData.file && formData.file instanceof File) {
-        fileURL = await uploadFile(formData.file);
-      }
+      // Verificar si existe una factura para editar
+    if (
+      BillEdit && 
+      typeof BillEdit.file === "string" && // Asegurar que sea una URL (string)
+      formData.file && 
+      formData.file instanceof File // Asegurar que el nuevo archivo sea un File
+    ) {
+      // Eliminar el archivo anterior
+      await deleteFile(BillEdit.file);
+    }
+
+    // Subir archivo si es de tipo File
+    if (formData.file && formData.file instanceof File) {
+      fileURL = await uploadFile(formData.file);
+    }
 
       // Crear el objeto bill con la URL del archivo (si existe)
       const billData: BillInterface = {

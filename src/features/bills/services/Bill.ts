@@ -14,7 +14,8 @@ import {
   getStorage, 
   ref, 
   uploadBytes, 
-  getDownloadURL 
+  getDownloadURL, 
+  deleteObject
 } from "firebase/storage";
 import { Bill, BillsByID } from "../shared/models";
 
@@ -125,6 +126,19 @@ export const uploadFile = async (file: File): Promise<string> => {
     return downloadURL;
   } catch (e) {
     console.error("Error al subir el archivo: ", e);
+    throw e;
+  }
+};
+
+// Servicio para eliminar un archivo en Firebase Storage
+export const deleteFile = async (fileURL: string): Promise<void> => {
+  try {
+    const storage = getStorage();
+    const fileRef = ref(storage, fileURL);
+    await deleteObject(fileRef);
+    console.log(`Archivo eliminado correctamente: ${fileURL}`);
+  } catch (e) {
+    console.error("Error al eliminar el archivo: ", e);
     throw e;
   }
 };
