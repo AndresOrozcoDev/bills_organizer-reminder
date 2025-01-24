@@ -84,5 +84,12 @@ Desplegado de forma gratuita en **Netlify**, para abrir el [Demo Bills](https://
 ## Libreria de iconos
 Se usa `lucid-react` por su ligero peso y compatibilidad con React JS, para la [docuemntación](https://lucide.dev/guide/packages/lucide-react) y visualizar los [Iconos](https://lucide.dev/icons/)
 
+---
+
 ## Autor
-[@AndresOrozcoDev](https://github.com/AndresOrozcoDev)
+
+**Andrés Orozco**
+- [GitHub](https://github.com/AndresOrozcoDev)
+- [LinkedIn](https://www.linkedin.com/in/andresorozcodev/)
+
+---
