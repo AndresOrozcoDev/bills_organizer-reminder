@@ -25,6 +25,30 @@
   overflow: auto;
 }
 
+.container .view-toggle {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.container .view-toggle div {
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  justify-content: space-around;
+}
+
+.container .view-toggle button:not(.active) {
+  color: var(--white-color);
+  background-color: var(--gray-ligth-color-secondary);
+}
+
+.container .view-toggle button.active {
+  color: var(--white-color);
+  background-color: var(--blue-ligth-color-primary);
+}
+
 @media (min-width: 600px) {
   .container .options__container {
     flex-direction: row;

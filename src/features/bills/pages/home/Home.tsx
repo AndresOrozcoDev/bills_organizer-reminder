@@ -12,7 +12,7 @@ import {
 import "./Home.css";
 
 import Header from "../../components/header/Header.tsx";
-import Dashboard from "../../components/dashboard/Dahboard.tsx";
+import Dashboard from "../../components/dashboard/Dashboard.tsx";
 
 interface HomeProps {
   user: any;
