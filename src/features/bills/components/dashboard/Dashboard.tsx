@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BillsByID } from "../../shared/models.ts";
 import Table from "../Table/Table.tsx";
-import Calendar from "../Calendar/Calendar.tsx";
+import MyCalendar from "../Calendar/Calendar.tsx";
 import "./Dashboard.css";
 
 interface DashboardProps {
@@ -42,7 +42,7 @@ function Dashboard({ bills, onDeleteBill }: DashboardProps) {
         {view === "table" ? (
           <Table bills={bills} onDelete={handleDeleteBill} />
         ) : (
-          <Calendar />
+          <MyCalendar />
         )}
       </div>
 
