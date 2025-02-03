@@ -17,16 +17,6 @@ function Dashboard({ bills, onDeleteBill }: DashboardProps) {
 
   return (
     <div className="container">
-      <div className="options__container">
-        <input
-          type="text"
-          className="dashboard__input"
-          placeholder="Buscar factura..."
-        />
-        <a href="/bill" className="btn">
-          Agregar factura
-        </a>
-      </div>
 
       <div className="view-toggle">
         <small>Escoge tu vista</small>
@@ -45,6 +35,8 @@ function Dashboard({ bills, onDeleteBill }: DashboardProps) {
           </button>
         </div>
       </div>
+
+      <hr />
 
       <div className="table__container">
         {view === "table" ? (

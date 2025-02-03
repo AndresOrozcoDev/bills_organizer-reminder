@@ -32,6 +32,10 @@ body {
   height: 100%;
 }
 
+a {
+  cursor: pointer;
+}
+
 .ellipsis {
   white-space: nowrap;
   overflow: hidden;

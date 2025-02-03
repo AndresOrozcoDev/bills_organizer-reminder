@@ -8,6 +8,7 @@ import NotFound from "./shared/pages/404/404.tsx";
 import Home from "./features/bills/pages/home/Home.tsx";
 import Login from "./features/auth/pages/login/Login.tsx";
 import Bill from "./features/bills/pages/bill/Bill.tsx";
+import Event from "./features/bills/pages/event/Event.tsx";
 import Register from "./features/auth/pages/register/Register.tsx";
 import ProtectedRoute from "./features/auth/components/protectedRoute/ProtectedRoute.tsx";
 
@@ -54,6 +55,14 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <Bill user={user} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/event"
+          element={
+            <ProtectedRoute user={user}>
+              <Event />
             </ProtectedRoute>
           }
         />
