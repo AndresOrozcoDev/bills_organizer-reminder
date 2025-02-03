@@ -6,7 +6,7 @@ import {
   getBillById,
   updateBill,
   uploadFile,
-} from "../../services/bill.ts";
+} from "../../services/Bill.ts";
 import Form from "../../components/Form/Form.tsx";
 import { Bill as BillInterface } from "../../shared/models.ts";
 import { useNavigate } from "react-router-dom";

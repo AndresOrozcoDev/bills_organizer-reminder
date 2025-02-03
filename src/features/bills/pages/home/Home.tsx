@@ -8,7 +8,7 @@ import {
   deleteFile,
   getBillById,
   getBillsByUser,
-} from "../../services/bill.ts";
+} from "../../services/Bill.ts";
 import "./Home.css";
 
 import Header from "../../components/header/Header.tsx";
