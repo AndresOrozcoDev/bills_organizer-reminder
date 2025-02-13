@@ -26,62 +26,64 @@ function Table({ bills, onDelete }: TableProps) {
         </a>
       </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Monto</th>
-            <th>Limite</th>
-            <th>Estado</th>
-            <th>Ver</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
-          </tr>
-        </thead>
-        <tbody>
-          {bills.map((bill) => (
-            <tr key={bill.id}>
-              <td>{bill.data.description}</td>
-              <td>{bill.data.amount}</td>
-              <td>{bill.data.date}</td>
-              <td>
-                <small
-                  className={`status--column ${
-                    bill.data.status.trim().toLowerCase() === "pendiente"
-                      ? "status--pending"
-                      : "status--paid"
-                  }`}
-                >
-                  {bill.data.status}
-                </small>
-              </td>
-              <td>
-                <a
-                  href={
-                    bill.data.file
-                      ? typeof bill.data.file === "string"
-                        ? bill.data.file
-                        : ""
-                      : undefined
-                  }
-                >
-                  <FileImage color="rgb(148, 164, 196)" size={28} />
-                </a>
-              </td>
-              <td>
-                <a href={`/bill/${bill.id}`}>
-                  <Pencil color="rgb(148, 164, 196)" size={28} />
-                </a>
-              </td>
-              <td>
-                <a onClick={() => handleDelete(bill.id)}>
-                  <X color="rgb(148, 164, 196)" size={28} />
-                </a>
-              </td>
+      <div className="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Monto</th>
+              <th>Limite</th>
+              <th>Estado</th>
+              <th>Ver</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {bills.map((bill) => (
+              <tr key={bill.id}>
+                <td>{bill.data.description}</td>
+                <td>{bill.data.amount}</td>
+                <td>{bill.data.date}</td>
+                <td>
+                  <small
+                    className={`status--column ${
+                      bill.data.status.trim().toLowerCase() === "pendiente"
+                        ? "status--pending"
+                        : "status--paid"
+                    }`}
+                  >
+                    {bill.data.status}
+                  </small>
+                </td>
+                <td>
+                  <a
+                    href={
+                      bill.data.file
+                        ? typeof bill.data.file === "string"
+                          ? bill.data.file
+                          : ""
+                        : undefined
+                    }
+                  >
+                    <FileImage color="rgb(148, 164, 196)" size={28} />
+                  </a>
+                </td>
+                <td>
+                  <a href={`/bill/${bill.id}`}>
+                    <Pencil color="rgb(148, 164, 196)" size={28} />
+                  </a>
+                </td>
+                <td>
+                  <a onClick={() => handleDelete(bill.id)}>
+                    <X color="rgb(148, 164, 196)" size={28} />
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </Fragment>
   );
 }

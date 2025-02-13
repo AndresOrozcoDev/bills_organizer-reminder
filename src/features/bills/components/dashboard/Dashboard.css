@@ -18,17 +18,25 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 1rem;
+  padding-bottom: 1rem;
   justify-content: space-around;
 }
 
-.container .view-toggle button:not(.active) {
-  color: var(--white-color);
-  background-color: var(--gray-ligth-color-secondary);
+.container .view-toggle div button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
 }
 
-.container .view-toggle button.active {
-  color: var(--white-color);
-  background-color: var(--blue-ligth-color-primary);
+.container .view-toggle div button.active {
+  border-bottom: 1px solid gray;
+  padding: 1rem;
 }
 
 .container .table__container {

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BillsByID } from "../../shared/models.ts";
+import { Table as TableIcon, Calendar } from "lucide-react";
 import Table from "../Table/Table.tsx";
 import MyCalendar from "../Calendar/Calendar.tsx";
 import "./Dashboard.css";
@@ -23,20 +24,20 @@ function Dashboard({ bills, onDeleteBill }: DashboardProps) {
         <div>
           <button
             onClick={() => setView("table")}
-            className={`btn btn--small ${view === "table" ? "active" : ""}`}
+            className={` ${view === "table" ? "active" : ""}`}
           >
+            <TableIcon />
             Tabla
           </button>
           <button
             onClick={() => setView("calendar")}
-            className={`btn btn--small ${view === "calendar" ? "active" : ""}`}
+            className={` ${view === "calendar" ? "active" : ""}`}
           >
+            <Calendar />
             Calendario
           </button>
         </div>
       </div>
-
-      <hr />
 
       <div className="table__container">
         {view === "table" ? (
