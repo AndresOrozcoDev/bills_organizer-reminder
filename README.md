@@ -50,7 +50,7 @@ Basado en el template **UKO** donde tiene una vista previa [UKO template](https:
 - Cuenta de Firebase para usar Firebase Authentication, Firestore y Firebase Storage.
 
 ## Demo
-Desplegado de forma gratuita en **Netlify**, para abrir el [Demo Bills](https://aesthetic-kleicha-9bf9d8.netlify.app/)
+Desplegado de forma gratuita en **Netlify**, para abrir el [Demo Bills](https://aesthetic-kleicha-9bf9d8.netlify.app/) con las credenciales de `admin@gmail.com` y `12345678`
 
 ## Instalación
 
